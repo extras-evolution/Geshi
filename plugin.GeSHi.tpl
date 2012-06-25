@@ -1,8 +1,11 @@
 /**
- *	GeSHi Plugin 0.4 for MODx
+ *	GeSHi Plugin 0.4 for MODx Evolution
  *	by Luca Allulli, April 2006
  *
- *  Event: OnLoadWebDocument
+ *	edited Sergej Savelev, june 2012
+ *	modification version 1.0
+ *	
+ *	Event: OnLoadWebDocument
  *
  *	Based on the GeSHi highlighter at http://qbnz.com/highlighter/
  *
