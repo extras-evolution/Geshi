@@ -43,9 +43,11 @@ switch ($e->name) {
 		include_once($modx->config["base_path"].'assets/plugins/geshi/geshi.php');
 
 		$modx->documentObject['content']=preg_replace_callback("#<pre>(.*?)</pre>#s", "replaceCode", $modx->documentObject['content']);
-
 		$modx->documentObject['content']=preg_replace_callback("#<pre language=\"([^\"]*)\">(.*?)</pre>#s", "replaceCodeLang", $modx->documentObject['content']);
-
+		
+		$modx->documentObject['content']=preg_replace('!<pre(.*?)>(.*?)</pre>!ise', " '<pre$1>' . stripslashes( str_replace(array('<br />','[[','&lt;','&gt;','&amp;','&nbsp;'),array('\n','[','<','>','&',' '),'$2') ) . '</pre>' ", $modx->documentObject['content']);
+        	$modx->documentObject['content']=preg_replace('!<code(.*?)>(.*?)</code>!ise', " '<pre$1>' . stripslashes( str_replace(array('<br />','[[','&lt;','&gt;','&amp;','&nbsp;'),array('\n','[','<','>','&',' '),'$2') ) . '</pre>' ", $modx->documentObject['content']);
+		
 		break;
 		
 	default:	// stop here
