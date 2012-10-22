@@ -47,8 +47,36 @@ switch ($e->name) {
         $modx->documentObject['content']=preg_replace_callback("#<pre language=\"([^\"]*)\">(.*?)</pre>#s", "replaceCodeLang", $modx->documentObject['content']);
         $modx->documentObject['content']=preg_replace_callback("#<pre lang=\"([^\"]*)\">(.*?)</pre>#s", "replaceCodeLang", $modx->documentObject['content']);
         
-        $modx->documentObject['content']= preg_replace('!<pre(.*?)>(.*?)</pre>!ise', " '<pre$1>' . stripslashes( str_replace(array('<br />','[[','&lt;','&gt;','&amp;','&nbsp;','[('),array('\n','&#091;[','<','>','&',' ','&#091;('),'$2') ) . '</pre>' ", $modx->documentObject['content']);
-        $modx->documentObject['content']= preg_replace('!<code(.*?)>(.*?)</code>!ise', " '<pre$1>' . stripslashes( str_replace(array('<br />','[[','&lt;','&gt;','&amp;','&nbsp;','[('),array('\n','&#091;[','<','>','&',' ','&#091;('),'$2') ) . '</pre>' ", $modx->documentObject['content']);
+        $modx->documentObject['content']= preg_replace('!<pre(.*?)>(.*?)</pre>!ise', " '<pre$1>' . stripslashes( str_replace(array(
+            '<br />',
+            '[[',
+            '&amp;',
+            '&nbsp;',
+            '<?php',
+            '?>'
+        ),array(
+            '\n',
+            '&#091;&#091;',
+            '&',
+            ' ',
+            '&lt;?php',
+            '?&gt;'
+        ),'$2') ) . '</pre>' ", $modx->documentObject['content']);
+        $modx->documentObject['content']= preg_replace('!<code(.*?)>(.*?)</code>!ise', " '<pre$1>' . stripslashes( str_replace(array(
+            '<br />',
+            '[[',
+            '&amp;',
+            '&nbsp;',
+            '<?php',
+            '?>'
+        ),array(
+            '\n',
+            '&#091;&#091;',
+            '&',
+            ' ',
+            '&lt;?php',
+            '?&gt;'
+        ),'$2') ) . '</pre>' ", $modx->documentObject['content']);
         
         break;
         
