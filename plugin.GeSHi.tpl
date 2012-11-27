@@ -43,9 +43,14 @@ switch ($e->name) {
         include_once($modx->config["base_path"].'assets/plugins/geshi/geshi.php');
 
         $modx->documentObject['content']=preg_replace_callback("#<pre>(.*?)</pre>#s", "replaceCode", $modx->documentObject['content']);
-
         $modx->documentObject['content']=preg_replace_callback("#<pre language=\"([^\"]*)\">(.*?)</pre>#s", "replaceCodeLang", $modx->documentObject['content']);
         $modx->documentObject['content']=preg_replace_callback("#<pre lang=\"([^\"]*)\">(.*?)</pre>#s", "replaceCodeLang", $modx->documentObject['content']);
+        $modx->documentObject['content']=preg_replace_callback("#<pre class=\"([^\"]*)\">(.*?)</pre>#s", "replaceCodeLang", $modx->documentObject['content']);
+        
+        $modx->documentObject['content']=preg_replace_callback("#<code>(.*?)</code>#s", "replaceCode", $modx->documentObject['content']);
+        $modx->documentObject['content']=preg_replace_callback("#<code language=\"([^\"]*)\">(.*?)</code>#s", "replaceCodeLang", $modx->documentObject['content']);
+        $modx->documentObject['content']=preg_replace_callback("#<code lang=\"([^\"]*)\">(.*?)</code>#s", "replaceCodeLang", $modx->documentObject['content']);
+        $modx->documentObject['content']=preg_replace_callback("#<code class=\"([^\"]*)\">(.*?)</code>#s", "replaceCodeLang", $modx->documentObject['content']);
         
         $modx->documentObject['content']= preg_replace('!<pre(.*?)>(.*?)</pre>!ise', " '<pre$1>' . stripslashes( str_replace(array(
             '<br />',
@@ -62,6 +67,7 @@ switch ($e->name) {
             '&lt;?php',
             '?&gt;'
         ),'$2') ) . '</pre>' ", $modx->documentObject['content']);
+        
         $modx->documentObject['content']= preg_replace('!<code(.*?)>(.*?)</code>!ise', " '<pre$1>' . stripslashes( str_replace(array(
             '<br />',
             '[[',
