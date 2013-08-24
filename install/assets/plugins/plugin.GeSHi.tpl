@@ -1,15 +1,19 @@
+//<?php
 /**
- *  GeSHi Plugin 0.4 for MODx
- *  by Luca Allulli, April 2006
+ * GeSHi
+ * 
+ * Based on the GeSHi highlighter
  *
- *  Event: OnLoadWebDocument
- *
- *  Based on the GeSHi highlighter at http://qbnz.com/highlighter/
- *
- *  License: GNU GPL
- *
+ * @category    plugin
+ * @version     0.4
+ * @license     http://www.gnu.org/copyleft/gpl.html GNU Public License (GPL)
+ * @internal    @properties
+ * @internal    @events OnLoadWebDocument
+ * @internal    @modx_category Content
+ * @internal    @legacy_names GeSHi
+ * @internal    @installset base, sample
  */
- 
+
 //Begin configuration
     global $defaultGeshiLang;
     $defaultGeshiLang="bash";
